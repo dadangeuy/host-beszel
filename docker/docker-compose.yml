@@ -1,0 +1,21 @@
+# reference: https://beszel.dev/guide/getting-started
+name: beszel
+services:
+  hub:
+    image: henrygd/beszel:latest
+    hostname: hub
+    restart: unless-stopped
+    ports:
+      - 8090:8090
+    volumes:
+      - ./storage/hub/data:/beszel_data
+      - ./storage/hub/socket:/beszel_socket
+  agent:
+    image: henrygd/beszel-agent:latest
+    hostname: agent
+    restart: unless-stopped
+    volumes:
+      - ./storage/agent/data:/var/lib/beszel-agent
+      - ./storage/agent/socket:/beszel_socket
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    env_file: ./environment/agent.env
