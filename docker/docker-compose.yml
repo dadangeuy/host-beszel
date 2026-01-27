@@ -1,21 +1,42 @@
 # reference: https://beszel.dev/guide/getting-started
 name: beszel
 services:
-  hub:
-    image: henrygd/beszel:latest
-    hostname: hub
+  tailscale:
+    profiles:
+      - hub
+      - agent
+    image: docker.io/tailscale/tailscale:stable
     restart: unless-stopped
-    ports:
-      - 8090:8090
+    env_file: ./environment/${HOSTNAME}/tailscale.env
+    volumes:
+      - ./storage/tailscale/ts-authkey-test:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    healthcheck:
+      test: tailscale status --active || exit 1
+      interval: 60s
+      timeout: 30s
+      start_period: 60s
+      retries: 4
+  hub:
+    profiles:
+      - hub
+    image: henrygd/beszel:latest
+    restart: unless-stopped
+    network_mode: service:tailscale
     volumes:
       - ./storage/hub/data:/beszel_data
       - ./storage/hub/socket:/beszel_socket
   agent:
+    profiles:
+      - agent
     image: henrygd/beszel-agent:latest
-    hostname: agent
     restart: unless-stopped
+    network_mode: service:tailscale
     volumes:
       - ./storage/agent/data:/var/lib/beszel-agent
       - ./storage/agent/socket:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    env_file: ./environment/agent.env
+    env_file: ./environment/${HOSTNAME}/agent.env

@@ -5,13 +5,18 @@ bootstrap:
 	ln -s $(abspath $(STORAGE_PATH)) $(abspath storage)
 
 update:
-	docker compose -f docker-compose.yml pull
+	docker compose -f docker-compose.yml --profile "*" pull
 
-start:
-	docker compose -f docker-compose.yml up -d --wait
+start: start-hub start-agent
+
+start-hub:
+	docker compose -f docker-compose.yml --profile hub up -d --wait
+
+start-agent:
+	docker compose -f docker-compose.yml --profile agent up -d --wait
 
 pause:
-	docker compose -f docker-compose.yml stop
+	docker compose -f docker-compose.yml --profile "*" agent stop
 
 stop:
-	docker compose -f docker-compose.yml down
+	docker compose -f docker-compose.yml --profile "*" down
