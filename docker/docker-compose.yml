@@ -35,6 +35,9 @@ services:
       timeout: 30s
       start_period: 60s
       retries: 4
+    depends_on:
+      tailscale:
+        condition: service_healthy
   agent:
     profiles:
       - agent
@@ -46,3 +49,6 @@ services:
       - ./storage/agent/socket:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file: ./environment/${HOSTNAME}/agent.env
+    depends_on:
+      tailscale:
+        condition: service_healthy
