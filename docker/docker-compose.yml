@@ -23,7 +23,7 @@ services:
   hub:
     profiles:
       - hub
-    image: henrygd/beszel:latest
+    image: henrygd/beszel:alpine
     restart: unless-stopped
     network_mode: service:tailscale
     volumes:
@@ -32,7 +32,7 @@ services:
   agent:
     profiles:
       - agent
-    image: henrygd/beszel-agent:latest
+    image: henrygd/beszel-agent:alpine
     restart: unless-stopped
     network_mode: service:tailscale
     volumes:
