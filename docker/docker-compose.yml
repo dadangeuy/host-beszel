@@ -3,8 +3,9 @@ name: beszel
 services:
   tailscale:
     profiles:
-      - hub
-      - agent
+      - mele-quieter-4c
+      - raspberry-pi-5
+      - razer-blade-14
     image: docker.io/tailscale/tailscale:stable
     restart: unless-stopped
     env_file: ./environment/${HOSTNAME}/tailscale.env
@@ -22,7 +23,7 @@ services:
       retries: 4
   nginx:
     profiles:
-      - hub
+      - raspberry-pi-5
     image: docker.io/nginx:stable-alpine
     restart: unless-stopped
     volumes:
@@ -43,7 +44,7 @@ services:
       retries: 4
   hub:
     profiles:
-      - hub
+      - raspberry-pi-5
     image: henrygd/beszel:alpine
     restart: unless-stopped
     network_mode: service:tailscale
@@ -61,7 +62,9 @@ services:
         condition: service_healthy
   agent:
     profiles:
-      - agent
+      - raspberry-pi-5
+      - mele-quieter-4c
+      - razer-blade-14
     image: henrygd/beszel-agent:alpine
     restart: unless-stopped
     network_mode: service:tailscale
