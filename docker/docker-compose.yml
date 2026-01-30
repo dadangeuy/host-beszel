@@ -25,8 +25,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./file/nginx/*.internal.crt:/etc/ssl/certs/internal.crt:ro
-      - ./file/nginx/*.internal.key:/etc/ssl/private/internal.key:ro
+      - ./file/nginx/*.internal.crt:/etc/ssl/certs/*.internal.crt:ro
+      - ./file/nginx/*.internal.key:/etc/ssl/private/*.internal.key:ro
     network_mode: service:tailscale
     depends_on:
       tailscale:
