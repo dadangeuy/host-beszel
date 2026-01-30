@@ -18,3 +18,6 @@ pause:
 
 stop:
 	docker compose -f docker-compose.yml --profile $(HOSTNAME) down
+
+create-certificate:
+
