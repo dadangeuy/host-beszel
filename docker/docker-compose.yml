@@ -24,9 +24,9 @@ services:
     image: docker.io/nginx:stable-alpine
     restart: unless-stopped
     volumes:
-      - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./file/nginx/internal.crt:/etc/ssl/certs/internal.crt
-      - ./file/nginx/internal.key:/etc/ssl/private/internal.key
+      - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./file/nginx/internal.crt:/etc/ssl/certs/internal.crt:ro
+      - ./file/nginx/internal.key:/etc/ssl/private/internal.key:ro
     network_mode: service:tailscale
     depends_on:
       tailscale:
@@ -43,6 +43,7 @@ services:
     restart: unless-stopped
     network_mode: service:tailscale
     volumes:
+      - ./file/nginx/internal.crt:/etc/ssl/certs/internal.crt:ro
       - ./storage/hub/data:/beszel_data
       - ./storage/hub/socket:/beszel_socket
     healthcheck:
@@ -60,9 +61,10 @@ services:
     restart: unless-stopped
     network_mode: service:tailscale
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./file/nginx/internal.crt:/etc/ssl/certs/internal.crt:ro
       - ./storage/agent/data:/var/lib/beszel-agent
       - ./storage/agent/socket:/beszel_socket
-      - /var/run/docker.sock:/var/run/docker.sock:ro
     env_file: ./environment/${HOSTNAME}/agent.env
     depends_on:
       tailscale:
