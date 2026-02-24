@@ -1,7 +1,6 @@
-STORAGE_PATH ?= /home/rizaldi/storages/beszel
-
 bootstrap:
-	mkdir -p $(abspath $(STORAGE_PATH)); \
+	test $${STORAGE_PATH?Missing environment variable}
+	mkdir -p $(abspath $(STORAGE_PATH))
 	ln -s $(abspath $(STORAGE_PATH)) $(abspath storage)
 
 update:
