@@ -17,4 +17,3 @@ pause:
 
 stop:
 	docker compose --profile $(HOSTNAME) down
-
