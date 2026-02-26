@@ -1,0 +1,15 @@
+services:
+  hub:
+    profiles:
+      - raspberry-pi-5
+    image: henrygd/beszel:alpine
+    restart: unless-stopped
+    volumes:
+      - ./storage/hub/data:/beszel_data
+      - ./storage/hub/socket:/beszel_socket
+    network_mode: service:tailscale
+    depends_on:
+      tailscale:
+        condition: service_healthy
+    healthcheck:
+      test: 'wget -q --spider http://127.0.0.1:8090'

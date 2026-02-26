@@ -4,17 +4,17 @@ bootstrap:
 	ln -s $(abspath $(STORAGE_PATH)) $(abspath storage)
 
 update:
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) down
+	docker compose --profile $(HOSTNAME) down
 	git pull --rebase
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) pull
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) up -d --wait
+	docker compose --profile $(HOSTNAME) pull
+	docker compose --profile $(HOSTNAME) up -d --wait
 
 start:
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) up -d --wait
+	docker compose --profile $(HOSTNAME) up -d --wait
 
 pause:
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) stop
+	docker compose --profile $(HOSTNAME) stop
 
 stop:
-	docker compose -f docker-compose.yml --profile $(HOSTNAME) down
+	docker compose --profile $(HOSTNAME) down
 

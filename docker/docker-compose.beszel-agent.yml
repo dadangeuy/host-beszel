@@ -1,0 +1,19 @@
+services:
+  agent:
+    profiles:
+      - raspberry-pi-5
+      - mele-quieter-4c
+      - razer-blade-14
+    image: henrygd/beszel-agent:alpine
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./storage/agent/data:/var/lib/beszel-agent
+      - ./storage/agent/socket:/beszel_socket
+    env_file:
+      - ./environment/agent.env
+      - ./environment/${HOSTNAME}/agent.env
+    network_mode: service:tailscale
+    depends_on:
+      tailscale:
+        condition: service_healthy
