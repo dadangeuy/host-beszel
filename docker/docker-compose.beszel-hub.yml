@@ -1,7 +1,7 @@
 services:
   hub:
     profiles:
-      - raspberry-pi-5
+      - mele-quieter-4c
     image: henrygd/beszel:alpine
     restart: unless-stopped
     volumes:
