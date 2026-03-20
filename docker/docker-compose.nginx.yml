@@ -1,7 +1,7 @@
 services:
   nginx:
     profiles:
-      - raspberry-pi-5
+      - mele-quieter-4c
     image: docker.io/nginx:stable-alpine
     restart: unless-stopped
     volumes:
