@@ -5,7 +5,6 @@ services:
       - mele-quieter-4c
       - razer-blade-14
     image: henrygd/beszel-agent:alpine
-    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./storage/agent/data:/var/lib/beszel-agent

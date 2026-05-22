@@ -3,7 +3,6 @@ services:
     profiles:
       - mele-quieter-4c
     image: docker.io/nginx:stable-alpine
-    restart: unless-stopped
     volumes:
       - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./file/nginx/internal.crt:/etc/ssl/certs/internal.crt:ro

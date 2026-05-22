@@ -3,7 +3,6 @@ services:
     profiles:
       - mele-quieter-4c
     image: henrygd/beszel:alpine
-    restart: unless-stopped
     volumes:
       - ./storage/hub/data:/beszel_data
       - ./storage/hub/socket:/beszel_socket

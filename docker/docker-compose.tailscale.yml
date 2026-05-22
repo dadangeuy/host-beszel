@@ -5,7 +5,6 @@ services:
       - raspberry-pi-5
       - razer-blade-14
     image: docker.io/tailscale/tailscale:stable
-    restart: unless-stopped
     env_file:
       - ./environment/tailscale.env
       - ./environment/${HOSTNAME}/tailscale.env
