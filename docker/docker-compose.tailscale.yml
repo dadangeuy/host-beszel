@@ -2,6 +2,7 @@ services:
   tailscale:
     profiles:
       - razer-blade-14
+      - vm-monitor
       - vm-infra
       - vm-light-app
       - vm-heavy-app

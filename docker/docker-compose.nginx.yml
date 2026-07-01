@@ -2,7 +2,7 @@ services:
   nginx:
     profiles:
       - razer-blade-14
-      - vm-infra
+      - vm-monitor
     image: docker.io/nginx:stable-alpine
     volumes:
       - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro

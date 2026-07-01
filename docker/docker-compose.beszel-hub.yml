@@ -2,7 +2,7 @@ services:
   hub:
     profiles:
       - razer-blade-14
-      - vm-infra
+      - vm-monitor
     image: henrygd/beszel:alpine
     volumes:
       - ./storage/hub/data:/beszel_data
