@@ -3,6 +3,8 @@ services:
     profiles:
       - razer-blade-14
       - vm-infra
+      - vm-light-app
+      - vm-heavy-app
     image: docker.io/tailscale/tailscale:stable
     env_file:
       - ./environment/tailscale.env
