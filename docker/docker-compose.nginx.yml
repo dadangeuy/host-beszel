@@ -1,7 +1,8 @@
 services:
   nginx:
     profiles:
-      - mele-quieter-4c
+      - razer-blade-14
+      - vm-infra
     image: docker.io/nginx:stable-alpine
     volumes:
       - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro

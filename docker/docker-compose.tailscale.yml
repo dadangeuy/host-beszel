@@ -1,9 +1,8 @@
 services:
   tailscale:
     profiles:
-      - mele-quieter-4c
-      - raspberry-pi-5
       - razer-blade-14
+      - vm-infra
     image: docker.io/tailscale/tailscale:stable
     env_file:
       - ./environment/tailscale.env
