@@ -6,8 +6,8 @@ services:
       - ./storage/agent/data:/var/lib/beszel-agent
       - ./storage/agent/socket:/beszel_socket
     env_file:
-      - ./environment/agent.env
-      - ./environment/${STAGE}/agent.env
+      - ./environment/beszel-agent.env
+      - ./environment/${STAGE}/beszel-agent.env
     network_mode: service:tailscale
     depends_on:
       tailscale:
