@@ -2,16 +2,13 @@ services:
   tailscale:
     profiles:
       - razer-blade-14
-      - vm-monitor
-      - vm-infra
-      - vm-light-app
-      - vm-heavy-app
+      - virtual-machine
     image: docker.io/tailscale/tailscale:stable
     env_file:
       - ./environment/tailscale.env
       - ./environment/${HOSTNAME}/tailscale.env
     volumes:
-      - ./storage/tailscale/ts-authkey-test:/var/lib/tailscale
+      - ./storage/tailscale/tailscale-state:/var/lib/tailscale
       - /dev/net/tun:/dev/net/tun
     cap_add:
       - NET_ADMIN

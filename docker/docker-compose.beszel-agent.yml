@@ -2,9 +2,7 @@ services:
   agent:
     profiles:
       - razer-blade-14
-      - vm-infra
-      - vm-light-app
-      - vm-heavy-app
+      - virtual-machine
     image: henrygd/beszel-agent:alpine
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
