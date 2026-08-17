@@ -1,8 +1,5 @@
 services:
   nginx:
-    profiles:
-      - razer-blade-14
-      - virtual-machine
     image: docker.io/nginx:stable-alpine
     volumes:
       - ./file/nginx/nginx.conf:/etc/nginx/nginx.conf:ro

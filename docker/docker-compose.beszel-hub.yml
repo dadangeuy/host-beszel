@@ -1,8 +1,5 @@
 services:
   hub:
-    profiles:
-      - razer-blade-14
-      - virtual-machine
     image: henrygd/beszel:alpine
     volumes:
       - ./storage/hub/data:/beszel_data

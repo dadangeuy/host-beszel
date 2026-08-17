@@ -4,16 +4,16 @@ bootstrap:
 	ln -s $(abspath $(STORAGE_PATH)) $(abspath storage)
 
 update:
-	docker compose --profile $(HOSTNAME) down
+	docker compose down
 	git pull --rebase
-	docker compose --profile $(HOSTNAME) pull
-	docker compose --profile $(HOSTNAME) up -d --wait
+	docker compose pull
+	docker compose up -d --wait
 
 start:
-	docker compose --profile $(HOSTNAME) up -d --wait
+	docker compose up -d --wait
 
 pause:
-	docker compose --profile $(HOSTNAME) stop
+	docker compose stop
 
 stop:
-	docker compose --profile $(HOSTNAME) down
+	docker compose down
