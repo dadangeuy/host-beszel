@@ -3,8 +3,8 @@ services:
     image: henrygd/beszel-agent:alpine
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./storage/agent/data:/var/lib/beszel-agent
-      - ./storage/agent/socket:/beszel_socket
+      - ./storage/beszel-agent/data:/var/lib/beszel-agent
+      - ./storage/beszel-agent/socket:/beszel_socket
     env_file:
       - ./environment/beszel-agent.env
       - ./environment/${STAGE}/beszel-agent.env

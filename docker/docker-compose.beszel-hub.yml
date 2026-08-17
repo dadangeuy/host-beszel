@@ -2,8 +2,8 @@ services:
   beszel-hub:
     image: henrygd/beszel:alpine
     volumes:
-      - ./storage/hub/data:/beszel_data
-      - ./storage/hub/socket:/beszel_socket
+      - ./storage/beszel-hub/data:/beszel_data
+      - ./storage/beszel-hub/socket:/beszel_socket
     network_mode: service:tailscale
     depends_on:
       tailscale:

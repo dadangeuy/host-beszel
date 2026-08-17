@@ -1,13 +1,13 @@
 services:
   beszel-agent:
     image: henrygd/beszel-agent:alpine
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./storage/agent/data:/var/lib/beszel-agent
-      - ./storage/agent/socket:/beszel_socket
     env_file:
       - environment/beszel-agent.env
       - environment/${STAGE}/beszel-agent.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./storage/beszel-agent/data:/var/lib/beszel-agent
+      - ./storage/beszel-agent/socket:/beszel_socket
     network_mode: service:tailscale
     depends_on:
       tailscale:
