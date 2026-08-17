@@ -1,5 +1,8 @@
 services:
   beszel-agent:
+    profiles:
+      - hub
+      - agent
     image: henrygd/beszel-agent:alpine
     env_file:
       - environment/beszel-agent.env

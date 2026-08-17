@@ -1,5 +1,7 @@
 services:
   tailscale:
+    profiles:
+      - hub
     image: docker.io/tailscale/tailscale:stable
     env_file:
       - ./environment/tailscale.env
