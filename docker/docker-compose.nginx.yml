@@ -9,7 +9,7 @@ services:
     depends_on:
       tailscale:
         condition: service_healthy
-      hub:
+      beszel-hub:
         condition: service_healthy
     healthcheck:
       test: 'curl --fail -I --insecure https://127.0.0.1:443'
