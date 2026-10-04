@@ -6,9 +6,6 @@ services:
     volumes:
       - ./storage/beszel-hub/data:/beszel_data
       - ./storage/beszel-hub/socket:/beszel_socket
-    network_mode: service:tailscale
-    depends_on:
-      tailscale:
-        condition: service_healthy
+    network_mode: container:tailscale
     healthcheck:
-      test: 'wget -q --spider http://127.0.0.1:8090'
+      test: wget -q --spider http://127.0.0.1:8090
