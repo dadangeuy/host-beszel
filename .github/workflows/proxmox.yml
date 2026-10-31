@@ -17,7 +17,7 @@ jobs:
       - name: Update beszel
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@beszel "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@beszel "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
   deploy-agents:
     needs: deploy-hub
     name: Deploy (Agents)
@@ -32,74 +32,74 @@ jobs:
       - name: Update adguard-1
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@adguard-1 "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@adguard-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update nginx-1
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@nginx-1 "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@nginx-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update cloudflare-1
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@cloudflare-1 "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@cloudflare-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update samba-1
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@samba-1 "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@samba-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update minio
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minio "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minio "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update opencloud
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@opencloud "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@opencloud "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update immich
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@immich "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@immich "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update hive
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@hive "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@hive "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update trino
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@trino "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@trino "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update n8n
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@n8n "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@n8n "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update superset
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@superset "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@superset "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update browserless
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@browserless "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@browserless "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update docmost
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@docmost "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@docmost "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update firefly
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@firefly "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@firefly "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update flame
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@flame "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@flame "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update tududi
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@tududi "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@tududi "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update palwolrd
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@palworld "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@palworld "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update minecraft-homestead
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minecraft-homestead "bash -lc 'cd /docker/services/host-beszel/docker && make update'"
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minecraft-homestead "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
 permissions:
   id-token: write
