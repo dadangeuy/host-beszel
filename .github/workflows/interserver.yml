@@ -1,4 +1,4 @@
-name: Deploy to Proxmox
+name: Deploy to InterServer
 on:
   push:
     branches:
