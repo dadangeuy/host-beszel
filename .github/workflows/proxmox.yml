@@ -6,6 +6,7 @@ on:
 jobs:
   deploy-hub:
     name: Deploy (Hub)
+    environment: proxmox
     runs-on: ubuntu-latest
     steps:
       - name: Connect to Tailscale
@@ -20,6 +21,7 @@ jobs:
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@beszel "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
   deploy-agents:
     needs: deploy-hub
+    environment: proxmox
     name: Deploy (Agents)
     runs-on: ubuntu-latest
     steps:
