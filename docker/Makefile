@@ -6,10 +6,10 @@ bootstrap:
 	ln -s $(abspath $(STORAGE_PATH)) $(abspath storage)
 
 update:
-	docker compose --profile $(BESZEL_MODE) down
+	make stop
 	git pull --rebase
 	docker compose --profile $(BESZEL_MODE) pull
-	docker compose --profile $(BESZEL_MODE) up -d --wait
+	make start
 
 start:
 	docker compose --profile $(BESZEL_MODE) up -d --wait
