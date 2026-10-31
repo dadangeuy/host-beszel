@@ -4,9 +4,9 @@ on:
     branches:
       - main
 jobs:
-  deploy-hub:
-    name: Deploy (Hub)
+  deploy:
     environment: proxmox
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Connect to Tailscale
@@ -19,18 +19,6 @@ jobs:
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@beszel "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
-  deploy-agents:
-    needs: deploy-hub
-    environment: proxmox
-    name: Deploy (Agents)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Connect to Tailscale
-        uses: tailscale/github-action@v4
-        with:
-          oauth-client-id: '${{ secrets.TS_OAUTH_CLIENT_ID }}'
-          audience: '${{ secrets.TS_AUDIENCE }}'
-          tags: 'tag:github'
       - name: Update adguard-1
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
