@@ -10,6 +10,7 @@ update:
 	git pull --rebase
 	docker compose --profile $(BESZEL_MODE) pull
 	make start
+	docker system prune -a -f
 
 start:
 	docker compose --profile $(BESZEL_MODE) up -d --wait
