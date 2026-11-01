@@ -1,12 +1,12 @@
-name: Deploy to Proxmox
+name: Proxmox (Docker)
 on:
   push:
     branches:
       - main
 jobs:
   deploy:
+    name: Deploy docker update
     environment: proxmox
-    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Connect to Tailscale
@@ -83,7 +83,7 @@ jobs:
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@tududi "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
-      - name: Update palwolrd
+      - name: Update palworld
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@palworld "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"

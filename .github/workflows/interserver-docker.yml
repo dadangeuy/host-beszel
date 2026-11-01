@@ -1,11 +1,11 @@
-name: Deploy to InterServer
+name: InterServer (Docker)
 on:
   push:
     branches:
       - main
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy docker update
     environment: interserver
     runs-on: ubuntu-latest
     steps:
