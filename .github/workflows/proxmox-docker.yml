@@ -91,5 +91,9 @@ jobs:
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minecraft-homestead "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
+      - name: Update silo-1
+        env:
+          SSHPASS: '${{ secrets.SSH_PASSWORD }}'
+        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@silo-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
 permissions:
   id-token: write
