@@ -4,6 +4,19 @@ services:
       - f89555aea98148ba834b2db3339bb52d # razer-blade-14
       - 2b2a914a961b4ffea7e89919e37c4b9a # beszel
     image: henrygd/beszel:alpine
+    env_file:
+      # environment
+      - environment/beszel-hub.env
+      - path: environment/beszel-hub.${STAGE}.env
+        required: false
+      - path: environment/beszel-hub.${STAGE}.${MACHINE_ID}.env
+        required: false
+      # secret
+      - ./storage/secret/beszel-hub.env
+      - path: ./storage/secret/beszel-hub.${STAGE}.env
+        required: false
+      - path: ./storage/secret/beszel-hub.${STAGE}.${MACHINE_ID}.env
+        required: false
     volumes:
       - ./storage/beszel-hub/data:/beszel_data
       - ./storage/beszel-hub/socket:/beszel_socket
