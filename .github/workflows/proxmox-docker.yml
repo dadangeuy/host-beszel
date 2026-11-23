@@ -35,10 +35,6 @@ jobs:
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
         run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@samba-1 "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
-      - name: Update minio
-        env:
-          SSHPASS: '${{ secrets.SSH_PASSWORD }}'
-        run: sshpass -e ssh -o StrictHostKeyChecking=accept-new user@minio "bash -lc 'cd /docker/services/${{ github.event.repository.name }}/docker && make update'"
       - name: Update opencloud
         env:
           SSHPASS: '${{ secrets.SSH_PASSWORD }}'
