@@ -11,12 +11,6 @@ services:
         required: false
       - path: environment/beszel-hub.${STAGE}.${MACHINE_ID}.env
         required: false
-      # secret
-      - ./storage/secret/beszel-hub.env
-      - path: ./storage/secret/beszel-hub.${STAGE}.env
-        required: false
-      - path: ./storage/secret/beszel-hub.${STAGE}.${MACHINE_ID}.env
-        required: false
     volumes:
       - ./storage/beszel-hub/data:/beszel_data
       - ./storage/beszel-hub/socket:/beszel_socket
