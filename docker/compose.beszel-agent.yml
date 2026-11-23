@@ -1,13 +1,18 @@
 services:
   beszel-agent:
-    profiles:
-      - hub
-      - agent
     image: henrygd/beszel-agent:alpine
     env_file:
+      # environment
       - environment/beszel-agent.env
-      - environment/${STAGE}/beszel-agent.env
-      - path: /etc/default/compose.beszel-agent.env
+      - path: environment/beszel-agent.${STAGE}.env
+        required: false
+      - path: environment/beszel-agent.${STAGE}.${MACHINE_ID}.env
+        required: false
+      # secret
+      - ./storage/secret/beszel-agent.env
+      - path: ./storage/secret/beszel-agent.${STAGE}.env
+        required: false
+      - path: ./storage/secret/beszel-agent.${STAGE}.${MACHINE_ID}.env
         required: false
     network_mode: container:tailscale
     volumes:

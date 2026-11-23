@@ -1,7 +1,8 @@
 services:
   beszel-hub:
     profiles:
-      - hub
+      - f89555aea98148ba834b2db3339bb52d # razer-blade-14
+      - 2b2a914a961b4ffea7e89919e37c4b9a # beszel
     image: henrygd/beszel:alpine
     volumes:
       - ./storage/beszel-hub/data:/beszel_data
